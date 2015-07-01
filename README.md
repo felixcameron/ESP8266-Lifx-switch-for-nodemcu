@@ -14,7 +14,7 @@ If it finds it then it assigns itself the IP ***.***.***.250 on the local networ
 
 If it does not find a recognised access point then it will create its own access point with the name ‘ConfigureMe’ and with the IP address 192.168.4.1 where the webpage will be accessible for configuration.
 
-I managed to get around a week of use as a wall switch with allot of use running from a tiny 140mah Lipo battery.
+I managed to get around a week of use as a wall switch with allot of use running from a tiny 260mah Lipo battery.
  
 The code switches the bulb immediately and you can modify it to use another GPIO as the trigger for switching and tell it not to sleep so it behaves just like a 'real' switch but then it will need allot more power than my little battery as it will stay awake on the network.
 
