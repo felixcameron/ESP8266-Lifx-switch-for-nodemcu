@@ -1,10 +1,10 @@
 # ESP8266-Lifx-switch-for-nodemcu
 Here are the lua scripts for a lifx light physical switch. 
-To use it, you *need* the latest dev version of nodemcu firmware on an ESP8266 as it provides enough RAM heap for the webserver to work (although it is a bit unstable and my code doesnt work with Safari, ony Chrome, anyone can help me fix it and look pretty please?). 
+To use it, you *need* the latest dev version of nodemcu firmware on an ESP8266 as it provides enough RAM heap for the webserver to work (although it is a bit unstable and my code doesnt work with Safari, only Chrome, anyone can help me fix it and look pretty please?). 
 
 GPIO16 needs to be connected to RST so deep sleep works. 
 
-The ESP8266 will boot up, wait to connect to the designated access point and then send a pair of UDP broadcast packets to the specified Lifx light and tells it to switch on/off. It then writes that state to a lua script so that it can survive reboot and then the ESP8255 goes to deep sleep. Pulling GPIO16 low (pressing the 'user' button on the v.09 nodemcu devboard) reboots the ESP8266 which starts the cycle over but sends 'on' if it was previously off or vice versa. If the light was switched in the meantime by the life app on a phone then two presses/boot cycles will be needed to 'resync' the switch with the light state (i.e. if first press sends 'off' to an already off light).
+The ESP8266 will boot up, wait to connect to the designated access point and then send a pair of UDP broadcast packets to the specified Lifx light and tells it to switch on/off. It then writes that state to a lua script so that it can survive reboot and then the ESP8266 goes to deep sleep. Pulling GPIO16 low (pressing the 'user' button on the v.09 nodemcu devboard) reboots the ESP8266 which starts the cycle over but sends 'on' if it was previously off or vice versa. If the light was switched in the meantime by the life app on a phone then two presses/boot cycles will be needed to 'resync' the switch with the light state (i.e. if first press sends 'off' to an already off light).
 
 To configure the light, pull GPIO16 low and then almost immediately after press GPIO0 ('flash' button on the v.09 nodemcu devboard). This is problematic as if you press it too soon it will boot into the bootloader for flashing firmware, and too late and the ESP8266 will have already got its IP address from the access point and sent its packets/gone to sleep. However if there is no wifi access point configured yet then you have a few seconds before the board reboots to try again. 
 
